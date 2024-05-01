@@ -33,7 +33,7 @@ class Role(Timestampable, SoftDeletes):
 
 class UserRole(Timestampable, SoftDeletes):
     # id = models.UUIDField(primary_key=True, unique=True,default=uuid.uuid4)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_roles')
     role = models.ForeignKey(Role, on_delete=models.CASCADE)
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)

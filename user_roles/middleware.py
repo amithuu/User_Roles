@@ -1,7 +1,7 @@
 from django.contrib.auth.signals import user_logged_in, user_logged_out
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from .models import User, UserLog
+from .models import User, UserLog, UserRole
 
 
 class UserActivityMiddleware:
@@ -26,7 +26,11 @@ class UserActivityMiddleware:
     @receiver(post_save, sender=User)
     def log_user_role_change(sender, instance, created, **kwargs):
         if not created:
-            UserLog.objects.create(user=instance, event_type='Role Change')
+            user_role = UserRole.objects.get(user=instance)
+            current_role = user_role.role
+            previous_role = UserRole.objects.filter(user=instance).order_by('-created_at').first()
+            if current_role != previous_role:
+                UserLog.objects.create(user=instance, event_type='Role Change')
 
 
 # class UserRoleChangeMiddleware:
