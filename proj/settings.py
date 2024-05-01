@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     'user_roles.middleware.UserActivityMiddleware',
-    'user_roles.middleware.UserRoleChangeMiddleware',
+    # 'user_roles.middleware.UserRoleChangeMiddleware',
     
 ]
 
