@@ -9,7 +9,7 @@ from rest_framework.exceptions import ValidationError
 from rest_framework import status
 
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.http import JsonResponse
 
 from .mailtrap import simple

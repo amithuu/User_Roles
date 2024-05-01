@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     'user_roles.middleware.UserActivityMiddleware',
-    # 'user_roles.middleware.UserRoleChangeMiddleware',
+    'user_roles.middleware.UserRoleChangeMiddleware',
     
 ]
 
@@ -141,6 +141,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'user_roles.User'
 
 # Email configs
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

@@ -1,8 +1,8 @@
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from.models import Role
+# from django.contrib.auth.models import User
+from.models import Role,User
 
 class UserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
@@ -36,7 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Role
-        fields = ['name',]
+        fields = ['id','name',]
 
     def create(self, validated_data):
         return Role.objects.create(**validated_data)

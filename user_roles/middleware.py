@@ -29,20 +29,20 @@ class UserActivityMiddleware:
             UserLog.objects.create(user=instance, event_type='Role Change')
 
 
-# class UserRoleChangeMiddleware:
-#     def __init__(self, get_response):
-#         self.get_response = get_response
+class UserRoleChangeMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
 
-#     def __call__(self, request):
-#         response = self.get_response(request)
-#         return response
+    def __call__(self, request):
+        response = self.get_response(request)
+        return response
 
-#     def process_response(self, request, response):
-#         if request.user.is_authenticated:
-#             if hasattr(request.user, 'initial_role'):
-#                 if request.user.role != request.user.initial_role:
-#                     UserLog.objects.create(user=request.user, event_type='Role Change')
-#         return response
+    def process_response(self, request, response):
+        if request.user.is_authenticated:
+            if hasattr(request.user, 'initial_role'):
+                if request.user.role != request.user.initial_role:
+                    UserLog.objects.create(user=request.user, event_type='Role Change')
+        return response
 
 # @receiver(user_logged_in)
 # def log_user_login(sender, request, user, **kwargs):
