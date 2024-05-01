@@ -51,12 +51,3 @@ class UserActivityMiddleware:
 # @receiver(user_logged_in)
 # def log_user_login(sender, request, user, **kwargs):
 #     UserLog.objects.create(user=user, event_type='Login')
-
-# @receiver(user_logged_out)
-# def log_user_logout(sender, request, user, **kwargs):
-#     UserLog.objects.create(user=user, event_type='Logout')
-
-# @receiver(post_save, sender=User)
-# def log_user_role_change(sender, instance, created, **kwargs):
-#     if not created:
-#         UserLog.objects.create(user=instance, event_type='Role Change')
